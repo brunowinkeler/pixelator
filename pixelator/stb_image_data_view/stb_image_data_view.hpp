@@ -1,7 +1,5 @@
 #pragma once
 
-#include "stb/stb_image.h"
-
 #include "ftxui/screen/color.hpp"
 #include "size.hpp"
 
@@ -11,9 +9,11 @@
 namespace pixelator {
 class StbImageDataView {
  private:
-  int m_rows;
-  int m_cols;
+  int m_width;
+  int m_height;
+  int m_channels;
   std::filesystem::path m_filepath;
+  unsigned char* m_imageData;
 
   void loadImage(void);
 

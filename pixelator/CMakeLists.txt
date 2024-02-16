@@ -2,7 +2,6 @@
 # You must have the following libraries:
 # - stb_image_data_view
 add_library(stb_image_data_view stb_image_data_view/stb_image_data_view.cpp)
-target_include_directories(stb_image_data_view INTERFACE ${PROJECT_SOURCE_DIR}/external/)
 target_link_libraries(stb_image_data_view PUBLIC cxx_setup)
 target_link_libraries(stb_image_data_view PUBLIC stb::stb)
 target_link_libraries(stb_image_data_view PUBLIC ftxui::screen)
