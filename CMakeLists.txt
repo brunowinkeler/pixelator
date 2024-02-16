@@ -16,7 +16,7 @@ target_compile_features(cxx_setup INTERFACE cxx_std_17)
 target_include_directories(cxx_setup INTERFACE ${PROJECT_SOURCE_DIR})
 
 # Update the submodules here
-include(external/UpdateSubmodules.cmake)
+# include(external/UpdateSubmodules.cmake)
 
 # Enable testing for this project
 include(CTest)
