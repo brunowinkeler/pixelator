@@ -26,13 +26,15 @@ StbImageDataView::StbImageDataView(std::string image_path)
   loadImage();
 }
 
+StbImageDataView::~StbImageDataView() { free(m_imageData); }
+
 StbImageDataView& StbImageDataView::operator=(
     StbImageDataView&& other_stb_image) {
-  this->m_width = other_stb_image.m_width;
-  this->m_height = other_stb_image.m_height;
-  this->m_channels = other_stb_image.m_channels;
-  this->m_filepath = other_stb_image.m_filepath;
-  this->m_imageData = other_stb_image.m_imageData;
+  m_width = other_stb_image.m_width;
+  m_height = other_stb_image.m_height;
+  m_channels = other_stb_image.m_channels;
+  m_filepath = other_stb_image.m_filepath;
+  m_imageData = other_stb_image.m_imageData;
   free(other_stb_image.m_imageData);
   return *this;
 }
@@ -57,21 +59,20 @@ void StbImageDataView::loadImage(void) {
 }
 
 pixelator::Size StbImageDataView::size(void) const {
-  return pixelator::Size{0, 0};
+  return pixelator::Size{m_width, m_height};
 }
 
-int StbImageDataView::rows(void) const { return this->m_width; }
+int StbImageDataView::rows(void) const { return m_width; }
 
-int StbImageDataView::cols(void) const { return this->m_height; }
+int StbImageDataView::cols(void) const { return m_height; }
 
 bool StbImageDataView::empty(void) const {
-  if (this->m_width != 0 && this->m_height != 0) { return false; }
+  if (m_width != 0 && m_height != 0) { return false; }
   return true;
 }
 
 ftxui::Color StbImageDataView::at(int row, int col) const {
-  if (this->m_width != row && this->m_height != col)
-    return ftxui::Color(255, 255, 255);
+  if (m_width != row && m_height != col) return ftxui::Color(255, 255, 255);
   return ftxui::Color(0, 0, 0);
 }
 

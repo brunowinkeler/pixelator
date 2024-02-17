@@ -20,7 +20,7 @@ class StbImageDataView {
  public:
   StbImageDataView();
   StbImageDataView(std::string image_path);
-
+  ~StbImageDataView();
   StbImageDataView& operator=(StbImageDataView&& other_stb_image);
 
   StbImageDataView(const StbImageDataView&) = delete;
