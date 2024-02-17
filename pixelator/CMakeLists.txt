@@ -6,7 +6,12 @@ target_link_libraries(stb_image_data_view PUBLIC cxx_setup)
 target_link_libraries(stb_image_data_view PUBLIC stb::stb)
 target_link_libraries(stb_image_data_view PUBLIC ftxui::screen)
 # - drawer
+
 # - image
+add_library(image image/image.cpp)
+target_link_libraries(image PUBLIC cxx_setup)
+target_link_libraries(image PUBLIC ftxui::screen)
+
 # - pixelate_image
 
 if(BUILD_TESTING)
