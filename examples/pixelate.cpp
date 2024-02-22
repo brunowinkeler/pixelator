@@ -1,6 +1,6 @@
 // #include "pixelator/drawer.hpp"
 // #include "pixelator/pixelate_image.hpp"
-#include "pixelator/stb_image_data_view/stb_image_data_view.hpp"
+#include "pixelator/stb_image_data_view.hpp"
 
 #include <cstddef>
 #include <filesystem>
@@ -24,6 +24,8 @@ int main(int argc, char **argv) {
     std::cerr << "Image could not be loaded" << std::endl;
     exit(1);
   }
+
+  auto col = image.at(0, 0);
   //   Drawer drawer{ftxui::Dimension::Full()};
 
   //   drawer.Set(PixelateImage(image, drawer.size()));

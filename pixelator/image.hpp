@@ -1,15 +1,14 @@
 #pragma once
 
-#include "ftxui/screen/color.hpp"
-
-#include <pixelator/stb_image_data_view/size.hpp>
+#include "color.hpp"
+#include "size.hpp"
 
 namespace pixelator {
 class Image {
  private:
   int m_cols;
   int m_rows;
-  ftxui::Color* m_pixImageData;
+  pixelator::Color* m_pixImageData;
 
  public:
   Image(/* args */);
@@ -22,7 +21,7 @@ class Image {
   int rows(void) const;
   int cols(void) const;
   bool empty(void) const;
-  ftxui::Color at(int row, int col) const;
+  pixelator::Color at(int row, int col) const;
 
   Image& operator=(const Image& other_image) = delete;
   Image& operator=(Image&& other_image) = delete;

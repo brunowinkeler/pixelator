@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ftxui/screen/color.hpp"
+
+#include "color.hpp"
 #include "size.hpp"
 
 #include <filesystem>
@@ -9,8 +11,8 @@
 namespace pixelator {
 class StbImageDataView {
  private:
-  int m_width;
-  int m_height;
+  int m_cols;
+  int m_rows;
   int m_channels;
   std::filesystem::path m_filepath;
   unsigned char* m_imageData;
@@ -31,6 +33,6 @@ class StbImageDataView {
   int rows(void) const;
   int cols(void) const;
   bool empty(void) const;
-  ftxui::Color at(int row, int col) const;
+  pixelator::Color at(int row, int col) const;
 };
 }  // namespace pixelator

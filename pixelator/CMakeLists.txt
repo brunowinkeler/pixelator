@@ -1,14 +1,14 @@
 # TODO: Add your libraries here
 # You must have the following libraries:
 # - stb_image_data_view
-add_library(stb_image_data_view stb_image_data_view/stb_image_data_view.cpp)
+add_library(stb_image_data_view stb_image_data_view.cpp)
 target_link_libraries(stb_image_data_view PUBLIC cxx_setup)
 target_link_libraries(stb_image_data_view PUBLIC stb::stb)
 target_link_libraries(stb_image_data_view PUBLIC ftxui::screen)
 # - drawer
 
 # - image
-add_library(image image/image.cpp)
+add_library(image image.cpp)
 target_link_libraries(image PUBLIC cxx_setup)
 target_link_libraries(image PUBLIC ftxui::screen)
 
