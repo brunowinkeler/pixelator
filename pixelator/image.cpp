@@ -4,47 +4,43 @@
 #include <cstdlib>
 
 namespace pixelator {
-Image::Image(/* args */) : m_cols{0}, m_rows{0}, m_pixImageData{nullptr} {}
-
-Image::Image(const int rows, const int cols) : m_cols{cols}, m_rows{rows} {
-  m_pixImageData = new pixelator::Color[rows * cols];
+Image::Image(const int rows, const int cols) : cols_{cols}, rows_{rows} {
+  pix_image_data_ = new ftxui::Color[rows * cols];
 }
 
-Image::Image(const Image& other_image) {
-  m_rows = other_image.m_rows;
-  m_cols = other_image.m_cols;
-  m_pixImageData =
-      new pixelator::Color[other_image.m_rows * other_image.m_cols];
-  std::copy(&other_image.m_pixImageData[0],
-            &other_image
-                 .m_pixImageData[(other_image.m_rows * other_image.m_cols) - 1],
-            m_pixImageData);
+Image::Image(const Image& other_image)
+    : cols_{other_image.cols_}, rows_{other_image.rows_} {
+  pix_image_data_ = new ftxui::Color[other_image.rows_ * other_image.cols_];
+  std::copy(
+      &other_image.pix_image_data_[0],
+      &other_image.pix_image_data_[(other_image.rows_ * other_image.cols_) - 1],
+      pix_image_data_);
 }
 
-Image::Image(Image&& other_image) {
-  m_rows = other_image.m_rows;
-  m_cols = other_image.m_cols;
-  m_pixImageData = other_image.m_pixImageData;
-  other_image.m_pixImageData = nullptr;
+Image::Image(Image&& other_image)
+    : cols_{other_image.cols_},
+      rows_{other_image.rows_},
+      pix_image_data_{other_image.pix_image_data_} {
+  other_image.pix_image_data_ = nullptr;
 }
 
-Image::~Image() { free(m_pixImageData); }
+Image::~Image() { free(pix_image_data_); }
 
 pixelator::Size Image::size(void) const {
-  return pixelator::Size{m_rows, m_cols};
+  return pixelator::Size{rows_, cols_};
 }
 
-int Image::rows(void) const { return m_rows; }
+int Image::rows(void) const { return rows_; }
 
-int Image::cols(void) const { return m_cols; }
+int Image::cols(void) const { return cols_; }
 
 bool Image::empty(void) const {
-  if (m_cols != 0 && m_rows != 0) { return false; }
+  if (cols_ != 0 && rows_ != 0) { return false; }
   return true;
 }
 
-pixelator::Color Image::at(int row, int col) const {
-  return m_pixImageData[row * m_cols + col];
+ftxui::Color& Image::at(int row, int col) const {
+  return pix_image_data_[row * cols_ + col];
 }
 
 }  // namespace pixelator

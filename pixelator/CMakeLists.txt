@@ -2,19 +2,19 @@
 # You must have the following libraries:
 
 # - stb_image_data_view
-add_library(stb_image_data_view STATIC stb_image_data_view.cpp)
+add_library(stb_image_data_view STATIC ${PROJECT_SOURCE_DIR}/pixelator/stb_image_data_view.cpp)
 target_link_libraries(stb_image_data_view PUBLIC cxx_setup)
 target_link_libraries(stb_image_data_view PUBLIC stb::stb)
 target_link_libraries(stb_image_data_view PUBLIC ftxui::screen)
 
 # - image
-add_library(image STATIC image.cpp)
+add_library(image STATIC ${PROJECT_SOURCE_DIR}/pixelator/image.cpp)
 target_link_libraries(image PUBLIC cxx_setup)
 target_link_libraries(image PUBLIC ftxui::screen)
 
-# - drawer
-
 # - pixelate_image
+
+# - drawer
 
 if(BUILD_TESTING)
   include(GoogleTest)
