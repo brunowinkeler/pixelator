@@ -46,8 +46,8 @@ int main(int argc, char **argv) {
   // The data is stored sequentially, in this order per pixel: red, green, blue,
   // alpha This patterns repeats for every pixel of the image, so the resulting
   // data layout is: [rgbargbargba...]
-  int query_row = 3;
-  int query_col = 2;
+  int query_row = 1;
+  int query_col = 0;
   const auto index{channels * (query_row * cols + query_col)};
   const Color color{
       image_data[index], image_data[index + 1], image_data[index + 2]};

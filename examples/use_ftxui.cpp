@@ -11,18 +11,18 @@ const ftxui::Color kBlueishColor = ftxui::Color::RGB(0, 100, 200);
 int main() {
   const ftxui::Dimensions dimensions{ftxui::Dimension::Full()};
   ftxui::Screen screen{ftxui::Screen::Create(dimensions)};
+  
+  // One pixel is a group of 2 in terminal
+
   auto &pixel_left = screen.PixelAt(0, 0);
   pixel_left.background_color = kYellowishColor;
-  pixel_left.character = 'X';
-  auto &pixel_right = screen.PixelAt(ftxui::Terminal::Size().dimx - 1,
-                                     ftxui::Terminal::Size().dimy - 1);
+  pixel_left.character = ' ';
+  
+  auto &pixel_right = screen.PixelAt(1, 0);
   pixel_right.background_color = kBlueishColor;
-  pixel_right.character = 'O';
-  screen.Print();
+  pixel_right.character = ' ';
 
-  std::cout << "Dimensions:" << std::endl;
-  std::cout << "X: " << ftxui::Terminal::Size().dimx << std::endl;
-  std::cout << "Y: " << ftxui::Terminal::Size().dimy << std::endl;
+  screen.Print();
 
   return 0;
 }

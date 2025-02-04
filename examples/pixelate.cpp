@@ -25,7 +25,6 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
-  auto col = image.at(0, 0);
   //   Drawer drawer{ftxui::Dimension::Full()};
 
   //   drawer.Set(PixelateImage(image, drawer.size()));
